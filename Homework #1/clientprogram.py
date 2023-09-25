@@ -16,22 +16,24 @@ def get_valid_input():
             print("Input is not a valid number. Please try again.")
 
 
-i = 0
+# i = 0
 
-while True:
-    # Call the function to get valid input
-    valid_input = get_valid_input()
-    print("The number entered is: ", valid_input)
+# while True:
 
-    s = socket(AF_INET, SOCK_STREAM)
-    s.connect((HOST, PORT)) # connect to server (block until accepted)
-    print(f"Client_{i} has connected to the server.")
-    msg = valid_input       # compose a message
-    s.send(msg.encode())    # send the message
-    print(f"Client_{i} sent {valid_input} to the server.")
-    data = s.recv(1024)     # receive the response
-    finaldata = data.decode()
-    print(f"Client_{i} received result: {finaldata}")    # print the result
-    s.close()               # close the connection
-    i= i + 1
+# Call the function to get valid input
+valid_input = get_valid_input()
+print("The number entered is: ", valid_input)
+
+s = socket(AF_INET, SOCK_STREAM)
+s.connect((HOST, PORT)) # connect to server (block until accepted)
+print("Client has connected to the server.")
+msg = valid_input       # compose a message
+s.send(msg.encode())    # send the message
+print(f"Client sent {valid_input} to the server.")
+data = s.recv(1024)     # receive the response
+finaldata = data.decode()
+print(f"Client received result: {finaldata}")    # print the result
+s.close()               # close the connection
+
+ # i= i + 1
 
