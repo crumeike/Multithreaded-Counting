@@ -5,7 +5,7 @@ from time import *
 
 s = socket(AF_INET, SOCK_STREAM) 
 s.bind((HOST, PORT))  #-
-s.listen(socket.SOMAXCONN)           #-
+s.listen(1)           #-
 
 (conn, addr) = s.accept()  # returns new socket and addr. client 
 print(f"server has accepted: {conn}")
@@ -14,8 +14,8 @@ while True:                # forever
   data = conn.recv(1024)   # receive data from client
   if not data: break       # stop if client stopped
   msg = data.decode()+"*"  # process the incoming data into a response
-  print("Server sleeps before sending message...\n")
-  sleep(10)
+  # print("Server sleeps before sending message...\n")
+  # sleep(10)
   conn.send(msg.encode())  # return the response
   print(f"server sending message to {i}...")
   i += 1
